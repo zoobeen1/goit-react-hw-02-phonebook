@@ -23,7 +23,7 @@ export const theme = {
   borders: {
     none: 'none',
     light: '1px solid #eaeaea',
-    normal: '1px solid #e0e0e0',
+    normal: '1px solid #ccc',
   },
   radii: {
     none: '0',
