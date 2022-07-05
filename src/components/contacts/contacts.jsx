@@ -2,7 +2,7 @@ import React from 'react';
 import { Box } from '../common';
 export const Contacts = ({ contacts, deleteContact }) => {
   return (
-    <Box width="95%" mt="10px">
+    <Box width="95%" mt="10px" pt="20px">
       {contacts.map(contact => {
         return (
           <Box as="ul" key={contact.id} p="0px">
@@ -10,7 +10,6 @@ export const Contacts = ({ contacts, deleteContact }) => {
               as="li"
               display="flex"
               justifyContent="space-between"
-              pl="5px"
               fontWeight="500"
               mb="10px"
             >
