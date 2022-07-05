@@ -6,7 +6,7 @@ import { ErrorText } from './form.styled';
 import PropTypes from 'prop-types';
 
 export const InputForm = ({ onSubmit }) => {
-  const initialValues = { name: '', number: '' };
+  const INITIAL_VALUES = { name: '', number: '' };
   //Validation schema
   const schema = yup.object().shape({
     name: yup.string().min(5).max(40).required('Name is required'),
@@ -27,7 +27,7 @@ export const InputForm = ({ onSubmit }) => {
   }
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={INITIAL_VALUES}
       onSubmit={handleSubmit}
       validationSchema={schema}
     >
