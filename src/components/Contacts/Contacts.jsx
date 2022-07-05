@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '../1ommon';
+import { Box } from '../Common';
 import PropTypes from 'prop-types';
 export const Contacts = ({ contacts, deleteContact }) => {
   return (

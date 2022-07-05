@@ -1,4 +1,4 @@
-import { Box } from './1ox';
+import { Box } from './Box';
 export const Container = p => {
   return (
     <Box
