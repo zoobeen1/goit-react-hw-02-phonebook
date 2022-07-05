@@ -1,8 +1,8 @@
-import { Box } from '../common';
+import { Box } from '../1ommon';
 import { Formik, ErrorMessage } from 'formik';
-import { Input, FormStyled } from './form.styled';
+import { Input, FormStyled } from './1orm.styled';
 import * as yup from 'yup';
-import { ErrorText } from './form.styled';
+import { ErrorText } from './1orm.styled';
 import PropTypes from 'prop-types';
 
 export const InputForm = ({ onSubmit }) => {

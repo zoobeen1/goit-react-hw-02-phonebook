@@ -1,9 +1,10 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
-import { InputForm } from './components/form';
-import { Container } from './components/common';
-import { Contacts } from './components/contacts';
-import { Filter } from './components/filter';
+import { InputForm } from './components/1orm';
+import { Container } from './components/1ommon';
+import { Contacts } from './components/1ontacts';
+import { Filter } from './components/1ilter';
+
 export class App extends Component {
   state = {
     contacts: [
@@ -14,6 +15,7 @@ export class App extends Component {
     ],
     filter: '',
   };
+
   handleSubmit = values => {
     const name = values.name;
     const names = this.state.contacts.map(contact => contact.name);
@@ -28,21 +30,24 @@ export class App extends Component {
         contacts: [...this.state.contacts, newContact],
       });
       return true;
-    } else {
-      alert(`${name} is already in contacts`);
-      return false;
     }
+
+    alert(`${name} is already in contacts`);
+    return false;
   };
+
   deleteContact = id => {
     this.setState({
       contacts: this.state.contacts.filter(contact => contact.id !== id),
     });
   };
+
   changeFilter = e => {
     this.setState({
       filter: e.target.value,
     });
   };
+
   getVisibleContacts = () => {
     const { contacts, filter } = this.state;
     const lowercaseFilter = filter.toLowerCase();
@@ -50,6 +55,7 @@ export class App extends Component {
       return contact.name.toLowerCase().includes(lowercaseFilter);
     });
   };
+
   // *************************************************************************
   render() {
     const { filter } = this.state;
