@@ -1,29 +1,23 @@
-import { Box } from '../Common';
-import { Formik, ErrorMessage } from 'formik';
-import { Input, FormStyled, ErrorText } from './Form.styled';
+import { Formik } from 'formik';
+import { Input, FormStyled } from './Form.styled';
+import { Button } from 'components/Common';
+import { FormError } from './FormError';
 import * as yup from 'yup';
 import PropTypes from 'prop-types';
 
 export const InputForm = ({ onSubmit }) => {
   const INITIAL_VALUES = { name: '', number: '' };
-  //Validation schema
+  //Formik Validation schema
   const schema = yup.object().shape({
     name: yup.string().min(5).max(40).required('Name is required'),
     number: yup.string().min(5).max(13).required('Phone is required'),
   });
   //Submit function
   function handleSubmit(values, { resetForm }) {
+    //Здесь!! от возврата буля зависит сброс формы
     if (onSubmit(values)) resetForm();
   }
-  //Validation Error function
-  function FormError({ name }) {
-    return (
-      <ErrorMessage
-        name={name}
-        render={message => <ErrorText>{message}</ErrorText>}
-      />
-    );
-  }
+
   return (
     <Formik
       initialValues={INITIAL_VALUES}
@@ -32,7 +26,6 @@ export const InputForm = ({ onSubmit }) => {
     >
       <FormStyled>
         <label htmlFor="name">Name</label>
-
         <Input
           type="text"
           name="name"
@@ -41,11 +34,10 @@ export const InputForm = ({ onSubmit }) => {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           placeholder="Add a new contact"
           required
-        ></Input>
+        />
         <FormError name="name" />
 
         <label htmlFor="number">Phone</label>
-
         <Input
           type="tel"
           name="number"
@@ -54,22 +46,10 @@ export const InputForm = ({ onSubmit }) => {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           placeholder="Add a phone number"
           required
-        ></Input>
+        />
         <FormError name="number" />
 
-        <Box
-          as="button"
-          type="submit"
-          mt={2}
-          bg="button_color"
-          color="light_text"
-          border="normal"
-          borderRadius="normal"
-          px={3}
-          py={2}
-        >
-          {'Add contact'}
-        </Box>
+        <Button type="submit">Add contact</Button>
       </FormStyled>
     </Formik>
   );

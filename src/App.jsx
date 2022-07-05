@@ -16,6 +16,8 @@ export class App extends Component {
     filter: '',
   };
 
+  //Вызывается при отправке формы - возвращает буль от которого зависит сброс формы
+  //Буль необходим для реализации проверки дублирующихся записей
   handleSubmit = values => {
     const name = values.name;
     const names = this.state.contacts.map(contact => contact.name);
@@ -29,25 +31,27 @@ export class App extends Component {
       this.setState({
         contacts: [...this.state.contacts, newContact],
       });
-      return true;
+      return true; //Буль нужен!!! :) Смотреть выше
     }
-
     alert(`${name} is already in contacts`);
-    return false;
+    return false; //Буль нужен!!! :)
   };
 
+  //Удаляет контакт по его id
   deleteContact = id => {
     this.setState({
       contacts: this.state.contacts.filter(contact => contact.id !== id),
     });
   };
 
+  //Управляет фильтром - контроллируемый элемент
   changeFilter = e => {
     this.setState({
       filter: e.target.value,
     });
   };
 
+  //Возвращает массив контактов по фильтру
   getVisibleContacts = () => {
     const { contacts, filter } = this.state;
     const lowercaseFilter = filter.toLowerCase();
@@ -58,12 +62,14 @@ export class App extends Component {
 
   // *************************************************************************
   render() {
+    //Деструктуризация объекта из state
     const { filter } = this.state;
 
     return (
       <Container>
         <h2>Phonebook</h2>
         <InputForm onSubmit={this.handleSubmit} />
+
         <h2>Contacts</h2>
         <Filter filter={filter} onChange={this.changeFilter} />
         <Contacts
