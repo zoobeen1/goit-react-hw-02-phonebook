@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { Box } from '../Common';
 export const Filter = ({ filter, onChange }) => {
   return (
-    <label>
-      Find contact by name
+    <>
+      <label htmlFor="filter">Find contact by name</label>
       <Box
         as="input"
         mt={2}
@@ -17,7 +17,7 @@ export const Filter = ({ filter, onChange }) => {
         onChange={onChange}
         placeholder="Find contact by name"
       />
-    </label>
+    </>
   );
 };
 Filter.propTypes = {
